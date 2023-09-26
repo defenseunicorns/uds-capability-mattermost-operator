@@ -1,0 +1,31 @@
+application:
+  name: mattermost-operator
+  createNamespace: ###ZARF_VAR_MATTERMOST_OPERATOR_CREATE_NAMESPACE###
+  namespace: mattermost-operator
+  path: chart
+  repository: https://repo1.dso.mil/big-bang/product/packages/mattermost-operator.git
+  ref:
+    # renovate: datasource=gitlab-tags depName=big-bang/product/packages/mattermost-operator versioning=loose registryUrl=https://repo1.dso.mil
+    tag: 1.20.1-bb.0
+  dependsOn:
+    ###ZARF_VAR_MATTERMOST_OPERATOR_DEPENDS_ON###
+  baseValues:
+    imagePullSecrets:
+      - name: private-registry
+
+    image:
+      imagePullPolicy: IfNotPresent
+    podAnnotations:
+      bigbang.dev/istioVersion: ###ZARF_VAR_ISTIO_VERSION###
+
+    networkPolicies:
+      enabled: true
+      controlPlaneCidr: 0.0.0.0/0
+
+    istio:
+      enabled: true
+
+    monitoring:
+      enabled: true
+
+    openshift: false

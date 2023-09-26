@@ -20,8 +20,6 @@ export REPO_URL=https://github.com/defenseunicorns/uds-capability-mattermost-ope
 export GIT_BRANCH=<REPLACE_ME>
 export REGISTRY1_USERNAME=<REPLACE_ME>
 export REGISTRY1_PASSWORD=<REPLACE_ME>
-export GHCR_USERNAME=<REPLACE_ME>
-export GHCR_PASSWORD=<REPLACE_ME>
 export AWS_AVAILABILITY_ZONE=a
 ```
 
