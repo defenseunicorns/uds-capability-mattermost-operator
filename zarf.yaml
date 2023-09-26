@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/defenseunicorns/zarf/main/zarf.schema.json
+kind: ZarfPackageConfig
+metadata:
+  name: mattermost-operator
+  description: "UDS mattermost-operator capability deployed via flux"
+  version: "0.0.1"
+  architecture: amd64
+
+variables:
+  - name: MATTERMOST_OPERATOR_DEPENDS_ON
+    default: "[]"
+  - name: MATTERMOST_OPERATOR_CREATE_NAMESPACE
+    default: "true"
+
+components:
+  - name: istio-version
+    required: true
+    actions:
+      onDeploy:
+        before:
+          - cmd: kubectl get deployment -n monitoring monitoring-monitoring-kube-operator -o=jsonpath='{.spec.template.metadata.annotations.bigbang\.dev/istioVersion}'
+            setVariable: ISTIO_VERSION
+  - name: mattermost-operator
+    required: true
+    description: "Deploy mattermost-operator via flux"
+    charts:
+    # renovate: datasource=helm
+      - name: flux-app
+        url: https://defenseunicorns.github.io/uds-support-charts/
+        version: 1.0.7
+        namespace: mattermost-operator
+        valuesFiles:
+          - mattermost-operator-flux-values.yaml
+    repos:
+      - https://repo1.dso.mil/big-bang/product/packages/mattermost-operator.git
+    images:
+      - "registry1.dso.mil/ironbank/opensource/mattermost/mattermost-operator:v1.20.1"
+    actions:
+      onDeploy:
+        after:
+          - wait:
+              cluster:
+                kind: helmRelease
+                name: mattermost-operator
+                condition: Ready
+                namespace: bigbang
+            maxTotalSeconds: 900
+            description: mattermost-operator HelmRelease to be Ready
