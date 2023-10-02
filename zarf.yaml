@@ -46,3 +46,25 @@ components:
                 namespace: bigbang
             maxTotalSeconds: 900
             description: mattermost-operator HelmRelease to be Ready
+  - name: mattermost
+    required: true
+    descriptions: "Deploy mattermost via flux"
+    charts:
+    # renovate: datasource=helm
+      - name: flux-app
+        url: https://defenseunicorns.github.io/uds-support-charts/
+        version: 1.0.7
+        namespace: mattermost-operator
+        valuesFiles:
+          - mattermost-flux-values.yaml
+    actions:
+      onDeploy:
+        after:
+          - wait:
+              cluster:
+                kind: helmRelease
+                name: mattermost
+                condition: Ready
+                namespace: bigbang
+            maxTotalSeconds: 900
+            description: mattermost HelmRelease to be Ready
