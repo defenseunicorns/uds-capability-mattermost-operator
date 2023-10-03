@@ -6,7 +6,7 @@ application:
   repository: https://repo1.dso.mil/big-bang/product/packages/mattermost.git
   ref:
     # renovate: datasource=gitlab-tags depName=big-bang/product/packages/mattermost versioning=loose registryUrl=https://repo1.dso.mil
-    tag: 9.0.0-bb.0
+    tag: 8.1.2-bb.0
   dependsOn:
     ###ZARF_VAR_MATTERMOST_DEPENDS_ON###
   baseValues:
@@ -51,7 +51,7 @@ sso:
   user_api_endpoint: https://login.dso.mil/auth/realms/baby-yoda/protocol/openid-connect/userinfo
 
 networkPolicies:
-  enabled: true
+  enabled: false
   controlPlaneCidr: 0.0.0.0/0
   ingressLabels:
     app: null
@@ -64,16 +64,18 @@ enterprise:
   enabled: false
   license:
 postgresql:
+  install: true
   image:
     pullSecrets:
       - private-registry
-  install: true
   primary:
     podAnnotations:
       bigbang.dev/istioVersion: ###ZARF_VAR_ISTIO_VERSION###
   readReplicas:
     podAnnotations:
       bigbang.dev/istioVersion: ###ZARF_VAR_ISTIO_VERSION###
+database:
+  secret: null
 minio:
   install: true
   accessKey: minio
