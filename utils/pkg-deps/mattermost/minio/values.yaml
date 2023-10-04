@@ -1,0 +1,15 @@
+replicas: 1
+mode: standalone
+
+# Some reasonable requests instead of the bonkers defaults
+resources:
+  requests:
+    memory: 128Mi
+    cpu: 100m
+
+buckets:
+  - name: mattermost-bucket
+
+postJob:
+  podAnnotations:
+    sidecar.istio.io/inject: "false"

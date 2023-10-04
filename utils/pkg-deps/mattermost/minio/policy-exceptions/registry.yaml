@@ -1,0 +1,27 @@
+apiVersion: kyverno.io/v2alpha1
+kind: PolicyException
+metadata:
+  name: mattermost-minio-registry-exception
+  namespace: mattermost-minio
+spec:
+  exceptions:
+  - policyName: restrict-image-registries
+    ruleNames:
+    - validate-registries
+    - autogen-validate-registries
+  match:
+    any:
+    - resources:
+        kinds:
+        - Deployment
+        namespaces:
+        - mattermost-minio
+        names:
+        - minio
+    - resources:
+        kinds:
+        - Job
+        namespaces:
+        - mattermost-minio
+        names:
+        - minio-post-job

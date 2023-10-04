@@ -63,30 +63,12 @@ application:
     enterprise:
       enabled: false
       license:
-    postgresql:
-      image:
-        pullSecrets:
-          - private-registry
-      install: true
-      primary:
-        podAnnotations:
-          bigbang.dev/istioVersion: ###ZARF_VAR_ISTIO_VERSION###
-      readReplicas:
-        podAnnotations:
-          bigbang.dev/istioVersion: ###ZARF_VAR_ISTIO_VERSION###
     database:
-      secret: null
-    minio:
-      install: true
-      accessKey: minio
-      secretKey: BigBangDEVONLY
-      imagePullSecrets:
-        - name: private-registry
-      tenants:
-        metrics:
-          enabled: true
-      annotations:
-        bigbang.dev/istioVersion: ###ZARF_VAR_ISTIO_VERSION###
+      secret: "mattermost-postgres"
+    fileStore:
+      secret: "mattermost-object-store"
+      url: "mattermost-minio.minio.svc.cluster.local"
+      bucke: "mattermost-bucket"
 
     mattermostEnvs:
       # required for Keycloak >= 20.X to work with gitlab auth pointed to Keycloak
