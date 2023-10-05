@@ -34,5 +34,21 @@ func TestAllServicesRunning(t *testing.T) { //nolint:funlen
 		// Wait for the mattermost-operator Deployment to report that it is ready
 		output, err = platform.RunSSHCommandAsSudo(`kubectl rollout status deployment/mattermost-operator -n mattermost-operator --watch --timeout=1200s`)
 		require.NoError(t, err, output)
+
+		// Wait for the mattermost Deployment to exist.
+		output, err = platform.RunSSHCommandAsSudo(`timeout 1200 bash -c "while ! kubectl get deployment mattermost -n mattermost; do sleep 5; done"`)
+		require.NoError(t, err, output)
+
+		// Setup DNS records for cluster services
+		output, err = platform.RunSSHCommandAsSudo(`cd ~/app && utils/metallb/dns.sh && utils/metallb/hosts-write.sh`)
+		require.NoError(t, err, output)
+
+		// Ensure that Mattermost does not accept TLSv1.1
+		output, err = platform.RunSSHCommandAsSudo(`sslscan chat.bigbang.dev | grep "TLSv1.1" | grep "disabled"`)
+		require.NoError(t, err, output)
+
+		// Ensure that Mattermost is available outside of the cluster.
+		output, err = platform.RunSSHCommandAsSudo(`timeout 1200 bash -c "while ! curl -L -s --fail --show-error https://chat.bigbang.dev/login > /dev/null; do sleep 5; done"`)
+		require.NoError(t, err, output)
 	})
 }
