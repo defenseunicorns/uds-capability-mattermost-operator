@@ -64,9 +64,6 @@ application:
     global:
       imagePullSecrets:
         - name: private-registry
-    enterprise:
-      enabled: false
-      license:
     database:
       secret: "mattermost-postgres"
     fileStore:
