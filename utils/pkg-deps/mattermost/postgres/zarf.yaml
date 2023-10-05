@@ -33,7 +33,7 @@ components:
                 name: postgresql-0
                 condition: Ready
                 namespace: mattermost-db
-  - name: postgres-passwrod
+  - name: postgres-password
     required: true
     actions:
       onDeploy:
