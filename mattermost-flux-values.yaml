@@ -14,6 +14,10 @@ application:
     hostname: ###ZARF_VAR_DOMAIN###
     domain: ###ZARF_VAR_DOMAIN###
 
+    enterprise:
+      enabled: ###ZARF_VAR_MATTERMOST_ENTERPRISE_ENABLED###
+      license: ###ZARF_VAR_MATTERMOST_ENTERPRISE_LICENSE###
+
     openshift: false
 
     image:

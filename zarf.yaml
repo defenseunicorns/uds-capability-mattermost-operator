@@ -15,6 +15,10 @@ variables:
     default: "[]"
   - name: MATTERMOST_CREATE_NAMESPACE
     default: "true"
+  - name: MATTERMOST_ENTERPRISE_ENABLED
+    default: "false"
+  - name: MATTERMOST_ENTERPRISE_LICENSE
+    default: ""
   - name: DOMAIN
     default: "bigbang.dev"
 
