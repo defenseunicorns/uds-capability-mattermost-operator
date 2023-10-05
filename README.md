@@ -73,6 +73,6 @@ metadata:
 zarf-packages:
   # Mattermost Operator with a Mattermost instance
   - name: mattermost
-    repository: ghcr.io/defenseunicorns/uds-capability/mattermost-operator
+    repository: ghcr.io/defenseunicorns/uds-capability/mattermost
     ref: 0.0.1
 ```
