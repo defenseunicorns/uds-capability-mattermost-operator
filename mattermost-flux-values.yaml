@@ -67,8 +67,8 @@ application:
       secret: "mattermost-postgres"
     fileStore:
       secret: "mattermost-object-store"
-      url: "mattermost-minio.minio.svc.cluster.local"
-      bucke: "mattermost-bucket"
+      url: "mattermost-object-store.mattermost.svc.cluster.local"
+      bucket: "mattermost-bucket"
 
     mattermostEnvs:
       # required for Keycloak >= 20.X to work with gitlab auth pointed to Keycloak

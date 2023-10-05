@@ -1,5 +1,9 @@
-# uds-capability-mattermost-operator
+# uds-capability-mattermost
+Contains both the Mattermost Operator and a Mattermost component
+
 Bigbang [Mattermost Operator](https://repo1.dso.mil/big-bang/product/packages/mattermost-operator) deployed via flux by zarf
+
+Bigbang [Mattermost](https://repo1.dso.mil/big-bang/product/packages/mattermost) deployed via flux by zarf
 
 ## Deployment Prerequisites
 
@@ -45,8 +49,8 @@ metadata:
   architecture: amd64
 
 zarf-packages:
-  # Mattermost Operator
-  - name: mattermost-operator
+  # Mattermost Operator with a Mattermost instance
+  - name: mattermost
     repository: ghcr.io/defenseunicorns/uds-capability/mattermost-operator
     ref: 0.0.1
 ```

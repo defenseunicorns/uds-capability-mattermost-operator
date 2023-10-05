@@ -67,9 +67,6 @@ components:
       - https://repo1.dso.mil/big-bang/product/packages/mattermost.git
     images:
       - "registry1.dso.mil/ironbank/opensource/mattermost/mattermost:8.1.2"
-      - "registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2023-06-23T18-12-07Z"
-      - "registry1.dso.mil/ironbank/opensource/minio/minio:RELEASE.2023-06-19T19-52-50Z"
-      - "registry1.dso.mil/ironbank/opensource/postgres/postgresql11:11.18-1"
       - "registry1.dso.mil/ironbank/opensource/postgres/postgresql12:12.16"
     actions:
       onDeploy:

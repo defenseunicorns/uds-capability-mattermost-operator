@@ -12,6 +12,7 @@ components:
       - name: kyverno-exceptions
         files:
           - policy-exceptions/registry.yaml
+          - policy-exceptions/externalName.yaml
   - name: minio
     required: true
     charts:
@@ -45,3 +46,9 @@ components:
       - name: mattermost-secret
         files:
           - "secret.yaml"
+  - name: mattermost-service
+    required: true
+    manifests:
+      - name: mattermost-service
+        files:
+          - "service.yaml"
