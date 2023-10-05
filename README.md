@@ -11,6 +11,28 @@ Bigbang [Mattermost](https://repo1.dso.mil/big-bang/product/packages/mattermost)
 - Minimum compute requirements for single node deployment are at LEAST 64 GB RAM and 32 virtual CPU threads (aws `m6i.8xlarge` instance type should do)
 - k3d installed on machine
 
+#### General
+
+- Create `mattermost` namespace
+- Label `mattermost` namespace with `istio-injection: enabled`
+
+#### Database
+
+- A Postgres database is running on port `5432` and accessible to the cluster
+- This database can be logged into via the username `mattermost`
+- This database instance has a psql database created named `mattermostdb`
+- The `mattermost` user has read/write access to the above mentioned database
+- Create `mattermost-postgres` service in `mattermost` namespace that points to the psql database
+- Create `mattermost-postgres` secret in `mattermost` namespace with the keys `DB_CONNECTION_STRING` and `DB_CONNECTION_CHECK_URL` that contains connection the string to the for the psql database. Example connection string `postgres://mattermost:###ZARF_VAR_POSTGRES_DB_PASSWORD###@mattermost-postgres.mattermost.svc.cluster.local:5432/mattermostdb?connect_timeout=10&sslmode=disable`
+
+#### Object Storage
+
+- Create the secret `mattermost-object-store` in the `mattermost` namespace with the following keys:
+  - An example for in-cluster Minio can be found in this repository at the path `utils/pkg-deps/mattermost/minio/secret.yaml`
+  - Secret needs to contain the `accessKey` and `secretKey` for the object storage.
+- Create a bucket called `mattermost-bucket`
+- Create `mattermost-object-store` service in `mattermost` namespace that points to the object store url.
+
 ## Deploy
 
 ### Use zarf to login to the needed registries i.e. registry1.dso.mil
