@@ -54,7 +54,7 @@ components:
             description: mattermost-operator HelmRelease to be Ready
   - name: mattermost
     required: true
-    descriptions: "Deploy mattermost via flux"
+    description: "Deploy mattermost via flux"
     charts:
     # renovate: datasource=helm
       - name: flux-app
