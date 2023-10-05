@@ -166,7 +166,7 @@ build/test-pkg-deps: | build/zarf ## Build package dependencies for testing
 	cd build && ./zarf package create ../utils/pkg-deps/mattermost/postgres/ --skip-sbom --confirm
 	cd build && ./zarf package create ../utils/pkg-deps/mattermost/minio/ --skip-sbom --confirm
 
-build/uds-capability-mattermost-operator: | build ## Build the mattermost-operator capability
+build/uds-capability-mattermost-operator: | build ## Build the mattermost capability
 	cd build && ./zarf package create ../ --skip-sbom --confirm
 
 ########################################################################
@@ -186,15 +186,15 @@ deploy/test-pkg-deps: | build/zarf ## Deploy the package dependencies needed for
 	cd build && ./zarf package deploy zarf-package-mattermost-postgres-* --confirm
 	cd build && ./zarf package deploy zarf-package-mattermost-minio-* --confirm
 
-deploy/uds-capability-mattermost-operator: ## Deploy the mattermost-operator capability
-	cd build && ./zarf package deploy zarf-package-mattermost-operator-amd64-*.tar.zst --confirm
+deploy/uds-capability-mattermost-operator: ## Deploy the mattermost capability
+	cd build && ./zarf package deploy zarf-package-mattermost-amd64-*.tar.zst --confirm
 
 ########################################################################
 # Macro Section
 ########################################################################
 
 .PHONY: all
-all: build/all cluster/reset deploy/all ## Build and deploy mattermost-operator locally
+all: build/all cluster/reset deploy/all ## Build and deploy mattermost locally
 
 .PHONY: rebuild
 rebuild: clean build/all
