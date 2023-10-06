@@ -1,0 +1,4 @@
+namespaces:
+  - name: mattermost
+    labels:
+      istio-injection: enabled

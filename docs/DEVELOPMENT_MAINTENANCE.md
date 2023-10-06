@@ -3,13 +3,14 @@
 ## How to upgrade this capability
 
 This package is pulling in the [bigbang mattermost operator chart](https://repo1.dso.mil/big-bang/product/packages/mattermost-operator)
+and the [bigbang mattermost chart](https://repo1.dso.mil/big-bang/product/packages/mattermost)
 
-The [mattermost-operator-flux-values.yaml](../mattermost-operator-flux-values.yaml) file contains values used when creating the flux resources for this capability. This includes the version of the chart and the base values used for this capability.
+The [mattermost-operator-flux-values.yaml](../mattermost-operator-flux-values.yaml) and [mattermost-flux-values.yaml](../mattermost-flux-values.yaml) file contains values used when creating the flux resources for this capability. This includes the version of the chart and the base values used for this capability.
 
 To upgrade
 1) Point `application.ref.tag` to the updated version of the chart.
 1) Update any base values if necessary.
-1) Update the `mattermost-operator` component in the [zarf.yaml](../zarf.yaml) file to pull in the correct images needed for the updated version of the chart.
+1) Update the `mattermost-operator` and `mattermost` components in the [zarf.yaml](../zarf.yaml) file to pull in the correct images needed for the updated version of the chart.
 
 ## How to test this capability
 

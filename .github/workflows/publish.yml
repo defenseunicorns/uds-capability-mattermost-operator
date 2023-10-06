@@ -48,13 +48,22 @@ jobs:
           password: ${{ secrets.REGISTRY1_PASSWORD }}
 
       ####
+      # Build and publish dependency packages to use in a dev UDS Bundle
+      ####
+      - name: Build and publish dev-dependency mattermost-postgres package
+        run: cd utils/pkg-deps/mattermost/postgres && zarf package create --confirm --no-progress --output oci://ghcr.io/defenseunicorns/uds-capability/mattermost/dev-dependency
+
+      - name: Build and publish dev-dependency mattermost-minio package
+        run: cd utils/pkg-deps/mattermost/minio && zarf package create --confirm --no-progress --output oci://ghcr.io/defenseunicorns/uds-capability/mattermost/dev-dependency
+
+      ####
       # Build and publish capability package and skeleton
       ####
-      - name: Build mattermost-operator package
+      - name: Build mattermost package
         run: zarf package create --confirm --no-progress
 
-      - name: Publish mattermost-operator package
-        run: zarf package publish zarf-package-mattermost-operator-amd64-*.tar.zst oci://ghcr.io/defenseunicorns/uds-capability --no-progress
+      - name: Publish mattermost package
+        run: zarf package publish zarf-package-mattermost-amd64-*.tar.zst oci://ghcr.io/defenseunicorns/uds-capability --no-progress
 
-      - name: Publish mattermost-operator skeleton
+      - name: Publish mattermost skeleton
         run: zarf package publish . oci://ghcr.io/defenseunicorns/uds-capability --no-progress

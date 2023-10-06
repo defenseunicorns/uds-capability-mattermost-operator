@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/defenseunicorns/zarf/main/zarf.schema.json
 kind: ZarfPackageConfig
 metadata:
-  name: mattermost-operator
-  description: "UDS mattermost-operator capability deployed via flux"
+  name: mattermost
+  description: "UDS mattermost capability deployed via flux"
   version: "0.0.1"
   architecture: amd64
 
@@ -11,6 +11,16 @@ variables:
     default: "[]"
   - name: MATTERMOST_OPERATOR_CREATE_NAMESPACE
     default: "true"
+  - name: MATTERMOST_DEPENDS_ON
+    default: "[]"
+  - name: MATTERMOST_CREATE_NAMESPACE
+    default: "true"
+  - name: MATTERMOST_ENTERPRISE_ENABLED
+    default: "false"
+  - name: MATTERMOST_ENTERPRISE_LICENSE
+    default: ""
+  - name: DOMAIN
+    default: "bigbang.dev"
 
 components:
   - name: istio-version
@@ -46,3 +56,30 @@ components:
                 namespace: bigbang
             maxTotalSeconds: 900
             description: mattermost-operator HelmRelease to be Ready
+  - name: mattermost
+    required: true
+    description: "Deploy mattermost via flux"
+    charts:
+    # renovate: datasource=helm
+      - name: flux-app
+        url: https://defenseunicorns.github.io/uds-support-charts/
+        version: 1.0.7
+        namespace: mattermost
+        valuesFiles:
+          - mattermost-flux-values.yaml
+    repos:
+      - https://repo1.dso.mil/big-bang/product/packages/mattermost.git
+    images:
+      - "registry1.dso.mil/ironbank/opensource/mattermost/mattermost:8.1.2"
+      - "registry1.dso.mil/ironbank/opensource/postgres/postgresql12:12.16"
+    actions:
+      onDeploy:
+        after:
+          - wait:
+              cluster:
+                kind: helmRelease
+                name: mattermost
+                condition: Ready
+                namespace: bigbang
+            maxTotalSeconds: 900
+            description: mattermost HelmRelease to be Ready
