@@ -6,7 +6,7 @@ application:
   repository: https://repo1.dso.mil/big-bang/product/packages/mattermost.git
   ref:
     # renovate: datasource=gitlab-tags depName=big-bang/product/packages/mattermost versioning=loose registryUrl=https://repo1.dso.mil
-    tag: 8.1.2-bb.0
+    tag: 9.0.0-bb.0
   dependsOn:
     ###ZARF_VAR_MATTERMOST_DEPENDS_ON###
   baseValues:
