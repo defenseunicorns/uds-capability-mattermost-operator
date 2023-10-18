@@ -71,6 +71,7 @@ components:
       - https://repo1.dso.mil/big-bang/product/packages/mattermost.git@9.0.0-bb.0
     images:
       - "registry1.dso.mil/ironbank/opensource/mattermost/mattermost:9.0.0"
+      - "registry1.dso.mil/ironbank/opensource/postgres/postgresql12:12.16"
     actions:
       onDeploy:
         after:
