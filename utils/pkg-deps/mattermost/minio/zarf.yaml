@@ -2,7 +2,7 @@
 kind: ZarfPackageConfig
 metadata:
   name: mattermost-minio
-  version: "0.0.1"
+  version: "0.0.2"
   architecture: amd64
 
 components:
@@ -13,6 +13,12 @@ components:
         files:
           - policy-exceptions/registry.yaml
           - policy-exceptions/externalName.yaml
+  - name: minio-istio-exceptions
+    required: true
+    manifests:
+      - name: istio-exceptions
+        files:
+          - "peerauth.yaml"
   - name: minio
     required: true
     charts:
