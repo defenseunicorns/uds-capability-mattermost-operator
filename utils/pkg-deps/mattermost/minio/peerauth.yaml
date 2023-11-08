@@ -2,7 +2,7 @@ apiVersion: security.istio.io/v1beta1
 kind: PeerAuthentication
 metadata:
   name: minio-istio-exceptions
-  namespace: gitlab-minio
+  namespace: mattermost-minio
 spec:
   mtls:
     mode: PERMISSIVE
