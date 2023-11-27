@@ -2,7 +2,7 @@
 kind: ZarfPackageConfig
 metadata:
   name: mattermost-postgres
-  version: "0.0.2"
+  version: "0.0.3"
   architecture: amd64
 
 components:
@@ -13,6 +13,12 @@ components:
         files:
           - policy-exceptions/externalName.yaml
           - policy-exceptions/registry.yaml
+  - name: db-istio-exceptions
+    required: true
+    manifests:
+      - name: istio-exceptions
+        files:
+          - "peerauth.yaml"
   - name: postgres
     required: true
     charts:
