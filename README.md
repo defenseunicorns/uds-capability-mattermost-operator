@@ -74,5 +74,5 @@ zarf-packages:
   # Mattermost Operator with a Mattermost instance
   - name: mattermost
     repository: ghcr.io/defenseunicorns/uds-capability/mattermost
-    ref: 0.0.1
+    ref: x.x.x
 ```
