@@ -1,22 +1,24 @@
-name: build-and-publish
+name: build-and-publish-dev-deps
 
 concurrency:
     cancel-in-progress: true
-    group: build-and-publish
+    group: build-and-publish-dev-deps
 
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * *'
 
 jobs:
   build-and-publish-package:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ github.repository }}
+          ref: ${{ github.ref_name }}
 
       - name: Init zarf cache
         uses: actions/cache@v3
@@ -24,14 +26,24 @@ jobs:
           path: "~/.zarf-cache"
           key: zarf-cache
 
+      - name: Free GH runner build space
+        run: |
+          df -h
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo docker image prune --all --force
+          df -h
+
       - name: Install zarf
         uses: supplypike/setup-bin@v3
         with:
           # renovate: zarf-uri datasource=github-tags depName=defenseunicorns/zarf
-          uri: 'https://github.com/defenseunicorns/zarf/releases/download/v0.29.2/zarf_v0.29.2_Linux_amd64'
+          uri: 'https://github.com/defenseunicorns/zarf/releases/download/v0.31.2/zarf_v0.31.2_Linux_amd64'
           name: 'zarf'
           # renovate: datasource=github-tags depName=defenseunicorns/zarf versioning=semver
-          version: 'v0.29.2'
+          version: 'v0.31.2'
 
       - name: Login to GHCR
         uses: docker/login-action@v2
@@ -39,13 +51,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Login to registry1
-        uses: docker/login-action@v2
-        with:
-          registry: registry1.dso.mil
-          username: ${{ secrets.REGISTRY1_USERNAME }}
-          password: ${{ secrets.REGISTRY1_PASSWORD }}
 
       ####
       # Build and publish dependency packages to use in a dev UDS Bundle
@@ -55,15 +60,3 @@ jobs:
 
       - name: Build and publish dev-dependency mattermost-minio package
         run: cd utils/pkg-deps/mattermost/minio && zarf package create --confirm --no-progress --output oci://ghcr.io/defenseunicorns/uds-capability/mattermost/dev-dependency
-
-      ####
-      # Build and publish capability package and skeleton
-      ####
-      - name: Build mattermost package
-        run: zarf package create --confirm --no-progress
-
-      - name: Publish mattermost package
-        run: zarf package publish zarf-package-mattermost-amd64-*.tar.zst oci://ghcr.io/defenseunicorns/uds-capability --no-progress
-
-      - name: Publish mattermost skeleton
-        run: zarf package publish . oci://ghcr.io/defenseunicorns/uds-capability --no-progress
