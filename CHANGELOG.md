@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.2](https://github.com/defenseunicorns/uds-capability-mattermost-operator/compare/v0.1.1...v0.1.2) (2023-12-01)
+
+
+### Miscellaneous
+
+* Sync dev deps with releases ([01b85a8](https://github.com/defenseunicorns/uds-capability-mattermost-operator/commit/01b85a8fcb8ee00cd3c9ac46140dbdb6b374aea5))
+
 ## [0.1.1](https://github.com/defenseunicorns/uds-capability-mattermost-operator/compare/v0.1.0...v0.1.1) (2023-11-29)
 
 
