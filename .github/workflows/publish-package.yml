@@ -73,6 +73,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      ####
+      # Build and publish packages
+      ####
+      - name: Build and publish dev-dependency mattermost-postgres package
+        run: cd utils/pkg-deps/mattermost/postgres && zarf package create --confirm --no-progress --output oci://ghcr.io/defenseunicorns/uds-capability/mattermost/dev-dependency
+
+      - name: Build and publish dev-dependency mattermost-minio package
+        run: cd utils/pkg-deps/mattermost/minio && zarf package create --confirm --no-progress --output oci://ghcr.io/defenseunicorns/uds-capability/mattermost/dev-dependency
+
       - name: Publish mattermost package
         run: zarf package publish zarf-package-mattermost-amd64-*.tar.zst oci://ghcr.io/defenseunicorns/uds-capability --no-progress
 
