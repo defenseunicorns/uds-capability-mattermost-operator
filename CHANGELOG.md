@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.3](https://github.com/defenseunicorns/uds-capability-mattermost-operator/compare/v0.1.2...v0.1.3) (2023-12-07)
+
+
+### Features
+
+* Add configurable bucket suffix ([#15](https://github.com/defenseunicorns/uds-capability-mattermost-operator/issues/15)) ([d2e78e7](https://github.com/defenseunicorns/uds-capability-mattermost-operator/commit/d2e78e74e1969a2ae33ffc80a4a8613a3005e3ac))
+* add initial oscal component definition file. ([#13](https://github.com/defenseunicorns/uds-capability-mattermost-operator/issues/13)) ([44d78bc](https://github.com/defenseunicorns/uds-capability-mattermost-operator/commit/44d78bc7ef9ea7927624578d13c72cee028b7263))
+
 ## [0.1.2](https://github.com/defenseunicorns/uds-capability-mattermost-operator/compare/v0.1.1...v0.1.2) (2023-12-01)
 
 
