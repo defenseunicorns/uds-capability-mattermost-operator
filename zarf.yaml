@@ -72,7 +72,7 @@ components:
         valuesFiles:
           - mattermost-flux-values.yaml
     repos:
-      - https://repo1.dso.mil/big-bang/product/packages/mattermost.git@9.2.3-bb.0
+      - https://repo1.dso.mil/big-bang/product/packages/mattermost.git@v9.2.3-bb.0
     images:
       - "registry1.dso.mil/ironbank/opensource/mattermost/mattermost:9.2.3"
       - "registry1.dso.mil/ironbank/opensource/postgres/postgresql12:12.16"
