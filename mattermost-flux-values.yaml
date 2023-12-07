@@ -6,7 +6,7 @@ application:
   repository: https://repo1.dso.mil/big-bang/product/packages/mattermost.git
   ref:
     # renovate: datasource=gitlab-tags depName=big-bang/product/packages/mattermost versioning=loose registryUrl=https://repo1.dso.mil
-    tag: 9.0.0-bb.0
+    tag: v9.2.3-bb.0
   dependsOn:
     ###ZARF_VAR_MATTERMOST_DEPENDS_ON###
   baseValues:
@@ -69,7 +69,7 @@ application:
     fileStore:
       secret: "mattermost-object-store"
       url: "mattermost-object-store.mattermost.svc.cluster.local"
-      bucket: "mattermost-bucket"
+      bucket: "mattermost-bucket###ZARF_VAR_MATTERMOST_BUCKET_SUFFIX###"
 
     mattermostEnvs:
       # required for Keycloak >= 20.X to work with gitlab auth pointed to Keycloak

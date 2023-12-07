@@ -21,6 +21,8 @@ variables:
     default: "false"
   - name: MATTERMOST_ENTERPRISE_LICENSE
     default: ""
+  - name: MATTERMOST_BUCKET_SUFFIX
+    default: ""
   - name: DOMAIN
     default: "bigbang.dev"
 
@@ -70,9 +72,9 @@ components:
         valuesFiles:
           - mattermost-flux-values.yaml
     repos:
-      - https://repo1.dso.mil/big-bang/product/packages/mattermost.git@9.0.0-bb.0
+      - https://repo1.dso.mil/big-bang/product/packages/mattermost.git@v9.2.3-bb.0
     images:
-      - "registry1.dso.mil/ironbank/opensource/mattermost/mattermost:9.0.0"
+      - "registry1.dso.mil/ironbank/opensource/mattermost/mattermost:v9.2.3"
       - "registry1.dso.mil/ironbank/opensource/postgres/postgresql12:12.16"
     actions:
       onDeploy:
