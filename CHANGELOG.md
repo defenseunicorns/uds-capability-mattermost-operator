@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.4](https://github.com/defenseunicorns/uds-capability-mattermost-operator/compare/v0.1.3...v0.1.4) (2023-12-09)
+
+
+### Features
+
+* Variablize file store endpoint ([#16](https://github.com/defenseunicorns/uds-capability-mattermost-operator/issues/16)) ([fe89c0c](https://github.com/defenseunicorns/uds-capability-mattermost-operator/commit/fe89c0c1bec6e67f25c0e72fef24c820b1639586))
+
 ## [0.1.3](https://github.com/defenseunicorns/uds-capability-mattermost-operator/compare/v0.1.2...v0.1.3) (2023-12-07)
 
 
