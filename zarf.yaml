@@ -23,6 +23,8 @@ variables:
     default: ""
   - name: MATTERMOST_BUCKET_SUFFIX
     default: ""
+  - name: MATTERMOST_FILE_STORE_ENDPOINT
+    default: "minio.mattermost-minio.svc.cluster.local"
   - name: DOMAIN
     default: "bigbang.dev"
 

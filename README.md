@@ -31,7 +31,8 @@ Bigbang [Mattermost](https://repo1.dso.mil/big-bang/product/packages/mattermost)
   - An example for in-cluster Minio can be found in this repository at the path `utils/pkg-deps/mattermost/minio/secret.yaml`
   - Secret needs to contain the `accessKey` and `secretKey` for the object storage.
 - Create a bucket called `mattermost-bucket`
-- Create `mattermost-object-store` service in `mattermost` namespace that points to the object store url.
+- You can add a suffix to the bucket name using the `MATTERMOST_BUCKET_SUFFIX` zarf variable
+- Set the `MATTERMOST_FILE_STORE_ENDPOINT` zarf variable to the appropriate endpoint for your file store.
 
 ## Deploy
 

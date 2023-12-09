@@ -54,9 +54,3 @@ components:
       - name: mattermost-secret
         files:
           - "secret.yaml"
-  - name: mattermost-service
-    required: true
-    manifests:
-      - name: mattermost-service
-        files:
-          - "service.yaml"

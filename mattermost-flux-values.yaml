@@ -68,7 +68,7 @@ application:
       secret: "mattermost-postgres"
     fileStore:
       secret: "mattermost-object-store"
-      url: "mattermost-object-store.mattermost.svc.cluster.local"
+      url: "###ZARF_VAR_MATTERMOST_FILE_STORE_ENDPOINT###"
       bucket: "mattermost-bucket###ZARF_VAR_MATTERMOST_BUCKET_SUFFIX###"
 
     mattermostEnvs:
