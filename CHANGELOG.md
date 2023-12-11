@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.5](https://github.com/defenseunicorns/uds-capability-mattermost-operator/compare/v0.1.4...v0.1.5) (2023-12-11)
+
+
+### Features
+
+* expose volume and volume mounts ([#18](https://github.com/defenseunicorns/uds-capability-mattermost-operator/issues/18)) ([c06ae6a](https://github.com/defenseunicorns/uds-capability-mattermost-operator/commit/c06ae6a0f86aa944c15aa9ea59023b78870cc2cc))
+
 ## [0.1.4](https://github.com/defenseunicorns/uds-capability-mattermost-operator/compare/v0.1.3...v0.1.4) (2023-12-09)
 
 
