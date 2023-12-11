@@ -25,6 +25,12 @@ variables:
     default: ""
   - name: MATTERMOST_FILE_STORE_ENDPOINT
     default: "minio.mattermost-minio.svc.cluster.local"
+  - name: MATTERMOST_VOLUMES
+    default: "[]"
+    autoIndent: true
+  - name: MATTERMOST_VOLUME_MOUNTS
+    default: "[]"
+    autoIndent: true
   - name: DOMAIN
     default: "bigbang.dev"
 

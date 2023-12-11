@@ -74,3 +74,8 @@ application:
     mattermostEnvs:
       # required for Keycloak >= 20.X to work with gitlab auth pointed to Keycloak
       MM_GITLABSETTINGS_SCOPE: openid
+
+    volumes:
+      ###ZARF_VAR_MATTERMOST_VOLUMES###
+    volumeMounts:
+      ###ZARF_VAR_MATTERMOST_VOLUME_MOUNTS###
