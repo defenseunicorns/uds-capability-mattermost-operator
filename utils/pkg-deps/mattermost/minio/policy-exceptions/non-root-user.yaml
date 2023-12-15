@@ -1,8 +1,8 @@
 apiVersion: kyverno.io/v2alpha1
 kind: PolicyException
 metadata:
-  name: gitlab-minio-non-root-exception
-  namespace: gitlab-minio
+  name: mattermost-minio-non-root-exception
+  namespace: mattermost-minio
 spec:
   exceptions:
   - policyName: require-non-root-user
@@ -17,6 +17,6 @@ spec:
         kinds:
         - Pod
         namespaces:
-        - gitlab-minio
+        - mattermost-minio
         names:
         - minio-post-job-*
