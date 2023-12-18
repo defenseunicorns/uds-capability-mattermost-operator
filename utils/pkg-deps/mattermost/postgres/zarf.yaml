@@ -3,7 +3,7 @@ kind: ZarfPackageConfig
 metadata:
   name: mattermost-postgres
   # x-release-please-start-version
-  version: "0.1.6"
+  version: "0.1.7"
   # x-release-please-end
   architecture: amd64
 

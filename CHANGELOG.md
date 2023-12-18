@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.7](https://github.com/defenseunicorns/uds-capability-mattermost-operator/compare/v0.1.6...v0.1.7) (2023-12-18)
+
+
+### Features
+
+* Expose full SSO config ([#22](https://github.com/defenseunicorns/uds-capability-mattermost-operator/issues/22)) ([74b0221](https://github.com/defenseunicorns/uds-capability-mattermost-operator/commit/74b0221bb2da50187792994c171176ee52839e79))
+
 ## [0.1.6](https://github.com/defenseunicorns/uds-capability-mattermost-operator/compare/v0.1.5...v0.1.6) (2023-12-15)
 
 
