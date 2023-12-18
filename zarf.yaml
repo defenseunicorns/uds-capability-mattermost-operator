@@ -21,6 +21,7 @@ variables:
     default: "false"
   - name: MATTERMOST_ENTERPRISE_LICENSE
     default: ""
+    autoIndent: true
   - name: MATTERMOST_BUCKET_SUFFIX
     default: ""
   - name: MATTERMOST_FILE_STORE_ENDPOINT
@@ -31,6 +32,24 @@ variables:
   - name: MATTERMOST_VOLUME_MOUNTS
     default: "[]"
     autoIndent: true
+  - name: MATTERMOST_SSO_ENABLED
+    default: "false"
+  - name: MATTERMOST_SSO_CLIENT_ID
+    default: ""
+  - name: MATTERMOST_SSO_CLIENT_SECRET
+    default: ""
+  - name: MATTERMOST_SSO_AUTH_ENDPOINT
+    default: "https://login.dso.mil/auth/realms/baby-yoda/protocol/openid-connect/auth"
+  - name: MATTERMOST_SSO_TOKEN_ENDPOINT
+    default: "https://login.dso.mil/auth/realms/baby-yoda/protocol/openid-connect/token"
+  - name: MATTERMOST_SSO_USER_API_ENDPOINT
+    default: "https://login.dso.mil/auth/realms/baby-yoda/protocol/openid-connect/userinfo"
+  - name: MATTERMOST_SSO_EMAIL_SIGNUP_ENABLED
+    default: "false"
+  - name: MATTERMOST_SSO_EMAIL_SIGNIN_ENABLED
+    default: "false"
+  - name: MATTERMOST_SSO_USERNAME_SIGNIN_ENABLED
+    default: "false"
   - name: DOMAIN
     default: "bigbang.dev"
 
