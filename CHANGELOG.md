@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.8](https://github.com/defenseunicorns/uds-capability-mattermost-operator/compare/v0.1.7...v0.1.8) (2024-01-30)
+
+
+### Features
+
+* add initial lula lint action ([#25](https://github.com/defenseunicorns/uds-capability-mattermost-operator/issues/25)) ([ab25b51](https://github.com/defenseunicorns/uds-capability-mattermost-operator/commit/ab25b51b725523368742cd1b01a386fc038db595))
+
+
+### Miscellaneous
+
+* update mattermost to 9.3.0-bb.1 ([afd81ff](https://github.com/defenseunicorns/uds-capability-mattermost-operator/commit/afd81ff505a88f81148a2f19e31c89db9c5d90be))
+* update zarf and dubbd ([#27](https://github.com/defenseunicorns/uds-capability-mattermost-operator/issues/27)) ([afd81ff](https://github.com/defenseunicorns/uds-capability-mattermost-operator/commit/afd81ff505a88f81148a2f19e31c89db9c5d90be))
+
 ## [0.1.7](https://github.com/defenseunicorns/uds-capability-mattermost-operator/compare/v0.1.6...v0.1.7) (2023-12-18)
 
 
