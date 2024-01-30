@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v2alpha1
+kind: PolicyException
+metadata:
+  name: mattermost-minio-non-root-group-exception
+  namespace: mattermost-minio
+spec:
+  exceptions:
+  - policyName: require-non-root-group
+    ruleNames:
+    - run-as-group
+  match:
+    any:
+    - resources:
+        kinds:
+        - Pod
+        namespaces:
+        - mattermost-minio
+        names:
+        - minio-post-job-*
