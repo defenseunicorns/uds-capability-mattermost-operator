@@ -2,7 +2,7 @@ apiVersion: kyverno.io/v2alpha1
 kind: PolicyException
 metadata:
   name: mattermost-minio-non-root-group-exception
-  namespace: mattermost-db
+  namespace: mattermost-minio
 spec:
   exceptions:
   - policyName: require-non-root-group
