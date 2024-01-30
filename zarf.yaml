@@ -99,10 +99,10 @@ components:
         valuesFiles:
           - mattermost-flux-values.yaml
     repos:
-      - https://repo1.dso.mil/big-bang/product/packages/mattermost.git@v9.2.3-bb.1
+      - https://repo1.dso.mil/big-bang/product/packages/mattermost.git@9.3.0-bb.1
     images:
-      - "registry1.dso.mil/ironbank/opensource/mattermost/mattermost:v9.2.3"
-      - "registry1.dso.mil/ironbank/opensource/postgres/postgresql12:12.16"
+      - "registry1.dso.mil/ironbank/opensource/mattermost/mattermost:v9.3.0"
+      - "registry1.dso.mil/ironbank/opensource/postgres/postgresql12:12.17"
     actions:
       onDeploy:
         after:
