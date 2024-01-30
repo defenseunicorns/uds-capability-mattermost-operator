@@ -2,7 +2,7 @@ apiVersion: kyverno.io/v2alpha1
 kind: PolicyException
 metadata:
   name: mattermost-minio-host-path-exception
-  namespace: mattermost-db
+  namespace: mattermost-minio
 spec:
   exceptions:
   - policyName: restrict-host-path-write
