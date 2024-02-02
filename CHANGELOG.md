@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.9](https://github.com/defenseunicorns/uds-capability-mattermost-operator/compare/v0.1.8...v0.1.9) (2024-02-02)
+
+
+### Miscellaneous
+
+* bump dubbd to 0.18.0 ([2f1e207](https://github.com/defenseunicorns/uds-capability-mattermost-operator/commit/2f1e207ea47bbf8e56665cf31b2668de43021c7d))
+* update mattermost to 9.3.0-bb.2 ([#28](https://github.com/defenseunicorns/uds-capability-mattermost-operator/issues/28)) ([2f1e207](https://github.com/defenseunicorns/uds-capability-mattermost-operator/commit/2f1e207ea47bbf8e56665cf31b2668de43021c7d))
+
 ## [0.1.8](https://github.com/defenseunicorns/uds-capability-mattermost-operator/compare/v0.1.7...v0.1.8) (2024-01-30)
 
 
